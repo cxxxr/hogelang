@@ -47,6 +47,7 @@ type Token struct {
 
 %left OR
 %left AND
+%left EQ NE
 %left GT GE LT LE
 %left '+' '-'
 %left '*' '/' '%'

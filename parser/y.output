@@ -7,10 +7,10 @@ state 0
 	opt_decls: .    (74)
 	stmts: .    (4)
 
-	$end  reduce 4 (src line 74)
+	$end  reduce 4 (src line 75)
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	program  goto 1
 	block  goto 2
@@ -29,7 +29,7 @@ state 1
 state 2
 	program:  block.    (1)
 
-	.  reduce 1 (src line 57)
+	.  reduce 1 (src line 58)
 
 
 state 3
@@ -57,7 +57,7 @@ state 3
 	'('  shift 29
 	'{'  shift 26
 	'!'  shift 28
-	.  reduce 2 (src line 64)
+	.  reduce 2 (src line 65)
 
 	stmt  goto 9
 	if_stmt  goto 12
@@ -70,7 +70,7 @@ state 4
 
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	opt_decls  goto 33
 	decls  goto 34
@@ -82,32 +82,32 @@ state 5
 
 	NL  shift 7
 	';'  shift 8
-	.  reduce 75 (src line 434)
+	.  reduce 75 (src line 435)
 
 	decl  goto 35
 
 state 6
 	decls:  decl.    (76)
 
-	.  reduce 76 (src line 436)
+	.  reduce 76 (src line 437)
 
 
 state 7
 	decl:  NL.    (78)
 
-	.  reduce 78 (src line 440)
+	.  reduce 78 (src line 441)
 
 
 state 8
 	decl:  ';'.    (79)
 
-	.  reduce 79 (src line 442)
+	.  reduce 79 (src line 443)
 
 
 state 9
 	stmts:  opt_decls stmt.    (5)
 
-	.  reduce 5 (src line 79)
+	.  reduce 5 (src line 80)
 
 
 state 10
@@ -158,13 +158,13 @@ state 11
 	'='  shift 39
 	'('  shift 40
 	'['  shift 54
-	.  reduce 16 (src line 134)
+	.  reduce 16 (src line 135)
 
 
 state 12
 	stmt:  if_stmt.    (9)
 
-	.  reduce 9 (src line 99)
+	.  reduce 9 (src line 100)
 
 
 state 13
@@ -199,62 +199,62 @@ state 15
 	'('  shift 29
 	'{'  shift 26
 	'!'  shift 28
-	.  reduce 12 (src line 114)
+	.  reduce 12 (src line 115)
 
 	expr  goto 57
 
 state 16
 	stmt:  BREAK.    (14)
 
-	.  reduce 14 (src line 124)
+	.  reduce 14 (src line 125)
 
 
 state 17
 	stmt:  CONTINUE.    (15)
 
-	.  reduce 15 (src line 129)
+	.  reduce 15 (src line 130)
 
 
 state 18
 	expr:  ID.    (27)
 
-	.  reduce 27 (src line 196)
+	.  reduce 27 (src line 197)
 
 
 state 19
 	expr:  NIL.    (28)
 
-	.  reduce 28 (src line 202)
+	.  reduce 28 (src line 203)
 
 
 state 20
 	expr:  TRUE.    (29)
 
-	.  reduce 29 (src line 207)
+	.  reduce 29 (src line 208)
 
 
 state 21
 	expr:  FALSE.    (30)
 
-	.  reduce 30 (src line 212)
+	.  reduce 30 (src line 213)
 
 
 state 22
 	expr:  FIXNUM.    (31)
 
-	.  reduce 31 (src line 217)
+	.  reduce 31 (src line 218)
 
 
 state 23
 	expr:  FLOATNUM.    (32)
 
-	.  reduce 32 (src line 222)
+	.  reduce 32 (src line 223)
 
 
 state 24
 	expr:  STRING.    (33)
 
-	.  reduce 33 (src line 227)
+	.  reduce 33 (src line 228)
 
 
 state 25
@@ -262,7 +262,7 @@ state 25
 	namelist: .    (67)
 
 	ID  shift 59
-	.  reduce 67 (src line 398)
+	.  reduce 67 (src line 399)
 
 	namelist  goto 58
 
@@ -275,9 +275,9 @@ state 26
 	stmts: .    (4)
 
 	NL  shift 7
-	'}'  reduce 4 (src line 74)
+	'}'  reduce 4 (src line 75)
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	block  goto 60
 	stmts  goto 4
@@ -368,7 +368,7 @@ state 30
 	'('  shift 29
 	'{'  shift 26
 	'!'  shift 28
-	.  reduce 70 (src line 412)
+	.  reduce 70 (src line 413)
 
 	expr  goto 65
 	exprlist  goto 64
@@ -393,7 +393,7 @@ state 31
 	'('  shift 29
 	'{'  shift 26
 	'!'  shift 28
-	.  reduce 63 (src line 378)
+	.  reduce 63 (src line 379)
 
 	expr  goto 69
 	expr_pair  goto 68
@@ -411,7 +411,7 @@ state 32
 state 33
 	block:  stmts opt_decls.    (3)
 
-	.  reduce 3 (src line 69)
+	.  reduce 3 (src line 70)
 
 
 state 34
@@ -442,7 +442,7 @@ state 34
 	'{'  shift 26
 	'!'  shift 28
 	';'  shift 8
-	.  reduce 75 (src line 434)
+	.  reduce 75 (src line 435)
 
 	stmt  goto 71
 	if_stmt  goto 12
@@ -452,7 +452,7 @@ state 34
 state 35
 	decls:  decls decl.    (77)
 
-	.  reduce 77 (src line 438)
+	.  reduce 77 (src line 439)
 
 
 state 36
@@ -460,13 +460,13 @@ state 36
 	var_decls:  var_decls.',' var_decl 
 
 	','  shift 72
-	.  reduce 7 (src line 88)
+	.  reduce 7 (src line 89)
 
 
 state 37
 	var_decls:  var_decl.    (17)
 
-	.  reduce 17 (src line 140)
+	.  reduce 17 (src line 141)
 
 
 state 38
@@ -474,7 +474,7 @@ state 38
 	var_decl:  ID.'=' expr 
 
 	'='  shift 73
-	.  reduce 19 (src line 150)
+	.  reduce 19 (src line 151)
 
 
 state 39
@@ -516,7 +516,7 @@ state 40
 	'('  shift 29
 	'{'  shift 26
 	'!'  shift 28
-	.  reduce 70 (src line 412)
+	.  reduce 70 (src line 413)
 
 	expr  goto 76
 	exprlist  goto 75
@@ -885,7 +885,7 @@ state 57
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 13 (src line 119)
+	.  reduce 13 (src line 120)
 
 
 state 58
@@ -900,7 +900,7 @@ state 58
 state 59
 	namelist:  ID.    (68)
 
-	.  reduce 68 (src line 403)
+	.  reduce 68 (src line 404)
 
 
 state 60
@@ -910,10 +910,8 @@ state 60
 	.  error
 
 
-61: shift/reduce conflict (shift 50(0), red'n 37(6)) on EQ
-61: shift/reduce conflict (shift 51(0), red'n 37(6)) on NE
-61: shift/reduce conflict (shift 40(0), red'n 37(6)) on '('
-61: shift/reduce conflict (shift 54(0), red'n 37(6)) on '['
+61: shift/reduce conflict (shift 40(0), red'n 37(7)) on '('
+61: shift/reduce conflict (shift 54(0), red'n 37(7)) on '['
 state 61
 	expr:  expr.'(' exprlist ')' 
 	expr:  '-' expr.    (37)
@@ -936,17 +934,13 @@ state 61
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'('  shift 40
 	'['  shift 54
-	.  reduce 37 (src line 247)
+	.  reduce 37 (src line 248)
 
 
-62: shift/reduce conflict (shift 50(0), red'n 38(6)) on EQ
-62: shift/reduce conflict (shift 51(0), red'n 38(6)) on NE
-62: shift/reduce conflict (shift 40(0), red'n 38(6)) on '('
-62: shift/reduce conflict (shift 54(0), red'n 38(6)) on '['
+62: shift/reduce conflict (shift 40(0), red'n 38(7)) on '('
+62: shift/reduce conflict (shift 54(0), red'n 38(7)) on '['
 state 62
 	expr:  expr.'(' exprlist ')' 
 	expr:  '!' expr.    (38)
@@ -969,11 +963,9 @@ state 62
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'('  shift 40
 	'['  shift 54
-	.  reduce 38 (src line 252)
+	.  reduce 38 (src line 253)
 
 
 state 63
@@ -1064,7 +1056,7 @@ state 65
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 72 (src line 422)
+	.  reduce 72 (src line 423)
 
 
 state 66
@@ -1072,7 +1064,7 @@ state 66
 	exprlist_:  exprlist_.',' opt_decls expr 
 
 	','  shift 100
-	.  reduce 71 (src line 417)
+	.  reduce 71 (src line 418)
 
 
 state 67
@@ -1084,7 +1076,7 @@ state 67
 	NL  shift 7
 	','  shift 102
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	opt_decls  goto 101
 	decls  goto 5
@@ -1093,7 +1085,7 @@ state 67
 state 68
 	expr_pairs:  expr_pair.    (64)
 
-	.  reduce 64 (src line 382)
+	.  reduce 64 (src line 383)
 
 
 state 69
@@ -1163,7 +1155,7 @@ state 70
 state 71
 	stmts:  stmts decls stmt.    (6)
 
-	.  reduce 6 (src line 83)
+	.  reduce 6 (src line 84)
 
 
 state 72
@@ -1232,7 +1224,7 @@ state 74
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 8 (src line 94)
+	.  reduce 8 (src line 95)
 
 
 state 75
@@ -1279,13 +1271,11 @@ state 76
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 72 (src line 422)
+	.  reduce 72 (src line 423)
 
 
-77: shift/reduce conflict (shift 50(0), red'n 39(4)) on EQ
-77: shift/reduce conflict (shift 51(0), red'n 39(4)) on NE
-77: shift/reduce conflict (shift 40(0), red'n 39(4)) on '('
-77: shift/reduce conflict (shift 54(0), red'n 39(4)) on '['
+77: shift/reduce conflict (shift 40(0), red'n 39(5)) on '('
+77: shift/reduce conflict (shift 54(0), red'n 39(5)) on '['
 state 77
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1308,20 +1298,16 @@ state 77
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'*'  shift 43
 	'/'  shift 44
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 39 (src line 257)
+	.  reduce 39 (src line 258)
 
 
-78: shift/reduce conflict (shift 50(0), red'n 40(4)) on EQ
-78: shift/reduce conflict (shift 51(0), red'n 40(4)) on NE
-78: shift/reduce conflict (shift 40(0), red'n 40(4)) on '('
-78: shift/reduce conflict (shift 54(0), red'n 40(4)) on '['
+78: shift/reduce conflict (shift 40(0), red'n 40(5)) on '('
+78: shift/reduce conflict (shift 54(0), red'n 40(5)) on '['
 state 78
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1344,20 +1330,16 @@ state 78
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'*'  shift 43
 	'/'  shift 44
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 40 (src line 262)
+	.  reduce 40 (src line 263)
 
 
-79: shift/reduce conflict (shift 50(0), red'n 41(5)) on EQ
-79: shift/reduce conflict (shift 51(0), red'n 41(5)) on NE
-79: shift/reduce conflict (shift 40(0), red'n 41(5)) on '('
-79: shift/reduce conflict (shift 54(0), red'n 41(5)) on '['
+79: shift/reduce conflict (shift 40(0), red'n 41(6)) on '('
+79: shift/reduce conflict (shift 54(0), red'n 41(6)) on '['
 state 79
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1380,17 +1362,13 @@ state 79
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'('  shift 40
 	'['  shift 54
-	.  reduce 41 (src line 267)
+	.  reduce 41 (src line 268)
 
 
-80: shift/reduce conflict (shift 50(0), red'n 42(5)) on EQ
-80: shift/reduce conflict (shift 51(0), red'n 42(5)) on NE
-80: shift/reduce conflict (shift 40(0), red'n 42(5)) on '('
-80: shift/reduce conflict (shift 54(0), red'n 42(5)) on '['
+80: shift/reduce conflict (shift 40(0), red'n 42(6)) on '('
+80: shift/reduce conflict (shift 54(0), red'n 42(6)) on '['
 state 80
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1413,17 +1391,13 @@ state 80
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'('  shift 40
 	'['  shift 54
-	.  reduce 42 (src line 272)
+	.  reduce 42 (src line 273)
 
 
-81: shift/reduce conflict (shift 50(0), red'n 43(5)) on EQ
-81: shift/reduce conflict (shift 51(0), red'n 43(5)) on NE
-81: shift/reduce conflict (shift 40(0), red'n 43(5)) on '('
-81: shift/reduce conflict (shift 54(0), red'n 43(5)) on '['
+81: shift/reduce conflict (shift 40(0), red'n 43(6)) on '('
+81: shift/reduce conflict (shift 54(0), red'n 43(6)) on '['
 state 81
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1446,15 +1420,11 @@ state 81
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'('  shift 40
 	'['  shift 54
-	.  reduce 43 (src line 277)
+	.  reduce 43 (src line 278)
 
 
-82: shift/reduce conflict (shift 50(0), red'n 44(2)) on EQ
-82: shift/reduce conflict (shift 51(0), red'n 44(2)) on NE
 82: shift/reduce conflict (shift 40(0), red'n 44(2)) on '('
 82: shift/reduce conflict (shift 54(0), red'n 44(2)) on '['
 state 82
@@ -1492,11 +1462,9 @@ state 82
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 44 (src line 282)
+	.  reduce 44 (src line 283)
 
 
-83: shift/reduce conflict (shift 50(0), red'n 45(1)) on EQ
-83: shift/reduce conflict (shift 51(0), red'n 45(1)) on NE
 83: shift/reduce conflict (shift 40(0), red'n 45(1)) on '('
 83: shift/reduce conflict (shift 54(0), red'n 45(1)) on '['
 state 83
@@ -1535,13 +1503,11 @@ state 83
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 45 (src line 287)
+	.  reduce 45 (src line 288)
 
 
-84: shift/reduce conflict (shift 50(0), red'n 46(3)) on EQ
-84: shift/reduce conflict (shift 51(0), red'n 46(3)) on NE
-84: shift/reduce conflict (shift 40(0), red'n 46(3)) on '('
-84: shift/reduce conflict (shift 54(0), red'n 46(3)) on '['
+84: shift/reduce conflict (shift 40(0), red'n 46(4)) on '('
+84: shift/reduce conflict (shift 54(0), red'n 46(4)) on '['
 state 84
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1564,8 +1530,6 @@ state 84
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'+'  shift 41
 	'-'  shift 42
 	'*'  shift 43
@@ -1573,13 +1537,11 @@ state 84
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 46 (src line 292)
+	.  reduce 46 (src line 293)
 
 
-85: shift/reduce conflict (shift 50(0), red'n 47(3)) on EQ
-85: shift/reduce conflict (shift 51(0), red'n 47(3)) on NE
-85: shift/reduce conflict (shift 40(0), red'n 47(3)) on '('
-85: shift/reduce conflict (shift 54(0), red'n 47(3)) on '['
+85: shift/reduce conflict (shift 40(0), red'n 47(4)) on '('
+85: shift/reduce conflict (shift 54(0), red'n 47(4)) on '['
 state 85
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1602,8 +1564,6 @@ state 85
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'+'  shift 41
 	'-'  shift 42
 	'*'  shift 43
@@ -1611,24 +1571,11 @@ state 85
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 47 (src line 297)
+	.  reduce 47 (src line 298)
 
 
-86: shift/reduce conflict (shift 46(2), red'n 48(0)) on AND
-86: shift/reduce conflict (shift 47(1), red'n 48(0)) on OR
-86: shift/reduce conflict (shift 48(3), red'n 48(0)) on LT
-86: shift/reduce conflict (shift 49(3), red'n 48(0)) on LE
-86: shift/reduce conflict (shift 50(0), red'n 48(0)) on EQ
-86: shift/reduce conflict (shift 51(0), red'n 48(0)) on NE
-86: shift/reduce conflict (shift 52(3), red'n 48(0)) on GT
-86: shift/reduce conflict (shift 53(3), red'n 48(0)) on GE
-86: shift/reduce conflict (shift 41(4), red'n 48(0)) on '+'
-86: shift/reduce conflict (shift 42(4), red'n 48(0)) on '-'
-86: shift/reduce conflict (shift 43(5), red'n 48(0)) on '*'
-86: shift/reduce conflict (shift 44(5), red'n 48(0)) on '/'
-86: shift/reduce conflict (shift 45(5), red'n 48(0)) on '%'
-86: shift/reduce conflict (shift 40(0), red'n 48(0)) on '('
-86: shift/reduce conflict (shift 54(0), red'n 48(0)) on '['
+86: shift/reduce conflict (shift 40(0), red'n 48(3)) on '('
+86: shift/reduce conflict (shift 54(0), red'n 48(3)) on '['
 state 86
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1651,12 +1598,8 @@ state 86
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	AND  shift 46
-	OR  shift 47
 	LT  shift 48
 	LE  shift 49
-	EQ  shift 50
-	NE  shift 51
 	GT  shift 52
 	GE  shift 53
 	'+'  shift 41
@@ -1666,24 +1609,11 @@ state 86
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 48 (src line 302)
+	.  reduce 48 (src line 303)
 
 
-87: shift/reduce conflict (shift 46(2), red'n 49(0)) on AND
-87: shift/reduce conflict (shift 47(1), red'n 49(0)) on OR
-87: shift/reduce conflict (shift 48(3), red'n 49(0)) on LT
-87: shift/reduce conflict (shift 49(3), red'n 49(0)) on LE
-87: shift/reduce conflict (shift 50(0), red'n 49(0)) on EQ
-87: shift/reduce conflict (shift 51(0), red'n 49(0)) on NE
-87: shift/reduce conflict (shift 52(3), red'n 49(0)) on GT
-87: shift/reduce conflict (shift 53(3), red'n 49(0)) on GE
-87: shift/reduce conflict (shift 41(4), red'n 49(0)) on '+'
-87: shift/reduce conflict (shift 42(4), red'n 49(0)) on '-'
-87: shift/reduce conflict (shift 43(5), red'n 49(0)) on '*'
-87: shift/reduce conflict (shift 44(5), red'n 49(0)) on '/'
-87: shift/reduce conflict (shift 45(5), red'n 49(0)) on '%'
-87: shift/reduce conflict (shift 40(0), red'n 49(0)) on '('
-87: shift/reduce conflict (shift 54(0), red'n 49(0)) on '['
+87: shift/reduce conflict (shift 40(0), red'n 49(3)) on '('
+87: shift/reduce conflict (shift 54(0), red'n 49(3)) on '['
 state 87
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1706,12 +1636,8 @@ state 87
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	AND  shift 46
-	OR  shift 47
 	LT  shift 48
 	LE  shift 49
-	EQ  shift 50
-	NE  shift 51
 	GT  shift 52
 	GE  shift 53
 	'+'  shift 41
@@ -1721,13 +1647,11 @@ state 87
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 49 (src line 307)
+	.  reduce 49 (src line 308)
 
 
-88: shift/reduce conflict (shift 50(0), red'n 50(3)) on EQ
-88: shift/reduce conflict (shift 51(0), red'n 50(3)) on NE
-88: shift/reduce conflict (shift 40(0), red'n 50(3)) on '('
-88: shift/reduce conflict (shift 54(0), red'n 50(3)) on '['
+88: shift/reduce conflict (shift 40(0), red'n 50(4)) on '('
+88: shift/reduce conflict (shift 54(0), red'n 50(4)) on '['
 state 88
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1750,8 +1674,6 @@ state 88
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'+'  shift 41
 	'-'  shift 42
 	'*'  shift 43
@@ -1759,13 +1681,11 @@ state 88
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 50 (src line 312)
+	.  reduce 50 (src line 313)
 
 
-89: shift/reduce conflict (shift 50(0), red'n 51(3)) on EQ
-89: shift/reduce conflict (shift 51(0), red'n 51(3)) on NE
-89: shift/reduce conflict (shift 40(0), red'n 51(3)) on '('
-89: shift/reduce conflict (shift 54(0), red'n 51(3)) on '['
+89: shift/reduce conflict (shift 40(0), red'n 51(4)) on '('
+89: shift/reduce conflict (shift 54(0), red'n 51(4)) on '['
 state 89
 	expr:  expr.'(' exprlist ')' 
 	expr:  expr.'+' expr 
@@ -1788,8 +1708,6 @@ state 89
 	expr:  expr.'[' COLON expr ']' 
 	expr:  expr.'[' COLON ']' 
 
-	EQ  shift 50
-	NE  shift 51
 	'+'  shift 41
 	'-'  shift 42
 	'*'  shift 43
@@ -1797,7 +1715,7 @@ state 89
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 51 (src line 317)
+	.  reduce 51 (src line 318)
 
 
 state 90
@@ -1866,7 +1784,7 @@ state 91
 	'{'  shift 26
 	'!'  shift 28
 	']'  shift 111
-	.  reduce 67 (src line 398)
+	.  reduce 67 (src line 399)
 
 	expr  goto 110
 	namelist  goto 58
@@ -1928,9 +1846,9 @@ state 94
 	stmts: .    (4)
 
 	NL  shift 7
-	'}'  reduce 4 (src line 74)
+	'}'  reduce 4 (src line 75)
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	block  goto 115
 	stmts  goto 4
@@ -1944,7 +1862,7 @@ state 95
 
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	opt_decls  goto 116
 	decls  goto 5
@@ -1953,19 +1871,19 @@ state 95
 state 96
 	expr:  '{' block '}'.    (36)
 
-	.  reduce 36 (src line 242)
+	.  reduce 36 (src line 243)
 
 
 state 97
 	expr:  '(' expr ')'.    (52)
 
-	.  reduce 52 (src line 322)
+	.  reduce 52 (src line 323)
 
 
 state 98
 	expr:  LIST_DISPATCH exprlist ']'.    (58)
 
-	.  reduce 58 (src line 352)
+	.  reduce 58 (src line 353)
 
 
 state 99
@@ -1996,7 +1914,7 @@ state 100
 
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	opt_decls  goto 118
 	decls  goto 5
@@ -2016,7 +1934,7 @@ state 102
 
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	opt_decls  goto 120
 	decls  goto 5
@@ -2089,7 +2007,7 @@ state 104
 state 105
 	var_decls:  var_decls ',' var_decl.    (18)
 
-	.  reduce 18 (src line 145)
+	.  reduce 18 (src line 146)
 
 
 state 106
@@ -2129,19 +2047,19 @@ state 106
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 20 (src line 156)
+	.  reduce 20 (src line 157)
 
 
 state 107
 	expr:  expr '(' exprlist ')'.    (34)
 
-	.  reduce 34 (src line 232)
+	.  reduce 34 (src line 233)
 
 
 state 108
 	expr:  expr '[' expr ']'.    (53)
 
-	.  reduce 53 (src line 327)
+	.  reduce 53 (src line 328)
 
 
 state 109
@@ -2211,16 +2129,16 @@ state 110
 state 111
 	expr:  expr '[' COLON ']'.    (57)
 
-	.  reduce 57 (src line 347)
+	.  reduce 57 (src line 348)
 
 
 state 112
 	expr:  ID.    (27)
 	namelist:  ID.    (68)
 
-	','  reduce 68 (src line 403)
-	'{'  reduce 68 (src line 403)
-	.  reduce 27 (src line 196)
+	','  reduce 68 (src line 404)
+	'{'  reduce 68 (src line 404)
+	.  reduce 27 (src line 197)
 
 
 state 113
@@ -2252,10 +2170,10 @@ state 114
 	opt_decls: .    (74)
 	stmts: .    (4)
 
-	END  reduce 4 (src line 74)
+	END  reduce 4 (src line 75)
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	block  goto 127
 	stmts  goto 4
@@ -2344,7 +2262,7 @@ state 118
 state 119
 	expr:  TABLE_DISPATCH expr_pairs opt_decls ']'.    (59)
 
-	.  reduce 59 (src line 357)
+	.  reduce 59 (src line 358)
 
 
 state 120
@@ -2408,7 +2326,7 @@ state 121
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 66 (src line 391)
+	.  reduce 66 (src line 392)
 
 
  122: reduce/reduce conflict  (red'ns 74 and 4) on ELIF
@@ -2423,12 +2341,12 @@ state 122
 	opt_decls: .    (74)
 	stmts: .    (4)
 
-	ELIF  reduce 4 (src line 74)
-	ELSE  reduce 4 (src line 74)
-	END  reduce 4 (src line 74)
+	ELIF  reduce 4 (src line 75)
+	ELSE  reduce 4 (src line 75)
+	END  reduce 4 (src line 75)
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	block  goto 135
 	stmts  goto 4
@@ -2480,13 +2398,13 @@ state 123
 state 124
 	expr:  expr '[' expr COLON ']'.    (55)
 
-	.  reduce 55 (src line 337)
+	.  reduce 55 (src line 338)
 
 
 state 125
 	expr:  expr '[' COLON expr ']'.    (56)
 
-	.  reduce 56 (src line 342)
+	.  reduce 56 (src line 343)
 
 
 state 126
@@ -2540,19 +2458,19 @@ state 127
 state 128
 	expr:  COLON namelist '{' block '}'.    (35)
 
-	.  reduce 35 (src line 237)
+	.  reduce 35 (src line 238)
 
 
 state 129
 	namelist:  namelist ',' opt_decls ID.    (69)
 
-	.  reduce 69 (src line 407)
+	.  reduce 69 (src line 408)
 
 
 state 130
 	expr:  LIST_DISPATCH expr DOTDOT expr ']'.    (61)
 
-	.  reduce 61 (src line 367)
+	.  reduce 61 (src line 368)
 
 
 state 131
@@ -2613,19 +2531,19 @@ state 132
 	'%'  shift 45
 	'('  shift 40
 	'['  shift 54
-	.  reduce 73 (src line 427)
+	.  reduce 73 (src line 428)
 
 
 state 133
 	expr:  TABLE_DISPATCH expr_pairs ',' opt_decls ']'.    (60)
 
-	.  reduce 60 (src line 362)
+	.  reduce 60 (src line 363)
 
 
 state 134
 	expr_pairs:  expr_pairs ',' opt_decls expr_pair.    (65)
 
-	.  reduce 65 (src line 386)
+	.  reduce 65 (src line 387)
 
 
 state 135
@@ -2643,7 +2561,7 @@ state 135
 state 136
 	expr:  expr '[' expr COLON expr ']'.    (54)
 
-	.  reduce 54 (src line 332)
+	.  reduce 54 (src line 333)
 
 
  137: reduce/reduce conflict  (red'ns 74 and 4) on END
@@ -2654,10 +2572,10 @@ state 137
 	opt_decls: .    (74)
 	stmts: .    (4)
 
-	END  reduce 4 (src line 74)
+	END  reduce 4 (src line 75)
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	block  goto 144
 	stmts  goto 4
@@ -2668,7 +2586,7 @@ state 137
 state 138
 	stmt:  WHILE '(' expr ')' block END.    (11)
 
-	.  reduce 11 (src line 109)
+	.  reduce 11 (src line 110)
 
 
 state 139
@@ -2715,7 +2633,7 @@ state 139
 state 140
 	if_stmt:  IF '(' expr ')' block END.    (21)
 
-	.  reduce 21 (src line 162)
+	.  reduce 21 (src line 163)
 
 
  141: reduce/reduce conflict  (red'ns 74 and 4) on END
@@ -2726,10 +2644,10 @@ state 141
 	opt_decls: .    (74)
 	stmts: .    (4)
 
-	END  reduce 4 (src line 74)
+	END  reduce 4 (src line 75)
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	block  goto 146
 	stmts  goto 4
@@ -2763,7 +2681,7 @@ state 144
 state 145
 	expr:  LIST_DISPATCH expr DOTDOT expr ',' expr ']'.    (62)
 
-	.  reduce 62 (src line 372)
+	.  reduce 62 (src line 373)
 
 
 state 146
@@ -2776,7 +2694,7 @@ state 146
 state 147
 	if_stmt:  IF '(' expr ')' block elif_stmt END.    (23)
 
-	.  reduce 23 (src line 173)
+	.  reduce 23 (src line 174)
 
 
 state 148
@@ -2805,13 +2723,13 @@ state 148
 state 149
 	stmt:  FOR '(' ID COLON expr ')' block END.    (10)
 
-	.  reduce 10 (src line 104)
+	.  reduce 10 (src line 105)
 
 
 state 150
 	if_stmt:  IF '(' expr ')' block ELSE block END.    (22)
 
-	.  reduce 22 (src line 168)
+	.  reduce 22 (src line 169)
 
 
 state 151
@@ -2869,12 +2787,12 @@ state 152
 	opt_decls: .    (74)
 	stmts: .    (4)
 
-	ELIF  reduce 4 (src line 74)
-	ELSE  reduce 4 (src line 74)
-	END  reduce 4 (src line 74)
+	ELIF  reduce 4 (src line 75)
+	ELSE  reduce 4 (src line 75)
+	END  reduce 4 (src line 75)
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	block  goto 153
 	stmts  goto 4
@@ -2889,7 +2807,7 @@ state 153
 
 	ELIF  shift 143
 	ELSE  shift 154
-	.  reduce 24 (src line 179)
+	.  reduce 24 (src line 180)
 
 	elif_stmt  goto 155
 
@@ -2901,10 +2819,10 @@ state 154
 	opt_decls: .    (74)
 	stmts: .    (4)
 
-	END  reduce 4 (src line 74)
+	END  reduce 4 (src line 75)
 	NL  shift 7
 	';'  shift 8
-	.  reduce 74 (src line 432)
+	.  reduce 74 (src line 433)
 
 	block  goto 156
 	stmts  goto 4
@@ -2915,24 +2833,24 @@ state 154
 state 155
 	elif_stmt:  ELIF '(' expr ')' block elif_stmt.    (26)
 
-	.  reduce 26 (src line 190)
+	.  reduce 26 (src line 191)
 
 
 state 156
 	elif_stmt:  ELIF '(' expr ')' block ELSE block.    (25)
 
-	.  reduce 25 (src line 185)
+	.  reduce 25 (src line 186)
 
 
 49 terminals, 18 nonterminals
 80 grammar rules, 157/2000 states
-101 shift/reduce, 13 reduce/reduce conflicts reported
+49 shift/reduce, 13 reduce/reduce conflicts reported
 67 working sets used
 memory: parser 127/30000
 132 extra closures
-1010 shift entries, 16 exceptions
+980 shift entries, 16 exceptions
 72 goto entries
 45 entries saved by goto default
 Optimizer space used: output 795/30000
-795 table entries, 301 zero
+795 table entries, 296 zero
 maximum spread: 49, maximum offset: 154
