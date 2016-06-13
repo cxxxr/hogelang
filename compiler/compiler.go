@@ -256,6 +256,8 @@ func compFunctionExpr(expr *ast.FunctionExpr, exe *vm.Executable, env *Env) {
 	}
 	exe2 := vm.NewExecutable(exe)
 	compStmt(expr.Body, exe2, env, nil)
+	exe2.Gen(expr.Body.Pos(), vm.PUSH_NIL, 0, 0)
+	exe2.Gen(expr.Body.Pos(), vm.RETURN, 0, 0)
 	exe2 = assemble(exe2)
 	fn := vm.MakeFunction(expr.Parameters, exe2.GetCode(), len(env.names))
 	i := exe.SetConst(fn)
