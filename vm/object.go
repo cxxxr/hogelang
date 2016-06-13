@@ -73,7 +73,7 @@ func (x Floatnum) String() string {
 }
 
 func (x String) String() string {
-	return "\"" + string(x) + "\""
+	return string(x)
 }
 
 func (x Table) String() string {
