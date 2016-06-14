@@ -55,7 +55,7 @@ func NewParser(r io.Reader) *Parser {
 	})
 	ld.Add("$", func(sc *lex.Scanner) int {
 		parser.line++
-		parser.offset=0
+		parser.offset = 0
 		return NL
 	})
 	ld.Add("[ \t]+", func(sc *lex.Scanner) int {

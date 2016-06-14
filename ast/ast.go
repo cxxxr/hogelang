@@ -66,8 +66,13 @@ type FuncallExpr struct {
 
 type FunctionExpr struct {
 	Ast
-	Parameters []string
+	Parameters *Parameters
 	Body       *Block
+}
+
+type Parameters struct {
+	Names []string
+	Rest  string
 }
 
 type UnaryExpr struct {

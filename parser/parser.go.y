@@ -24,6 +24,7 @@ type Token struct {
 	expr_pair  ast.Expr
 	expr_pairs []ast.Expr
 	namelist   []string
+	parameters *ast.Parameters
 	exprlist   []ast.Expr
 	token      Token
 }
@@ -39,7 +40,8 @@ type Token struct {
 %type<expr> expr
 %type<expr_pair> expr_pair
 %type<expr_pairs> expr_pairs
-%type<namelist> namelist
+%type<parameters> parameters
+%type<namelist> parameters_
 %type<exprlist> exprlist
 %type<exprlist> exprlist_
 
@@ -235,14 +237,14 @@ expr
 		$$ = &ast.FuncallExpr{Fun: $1, Args: $3}
 		$$.SetPos($1.Pos())
 	}
-	| COLON namelist '{' block '}'
+	| COLON parameters '{' block '}'
 	{
 		$$ = &ast.FunctionExpr{Parameters: $2, Body: $4}
 		$$.SetPos($1.Pos())
 	}
 	| '{' block '}'
 	{
-		$$ = &ast.FunctionExpr{Parameters: []string{}, Body: $2}
+		$$ = &ast.FunctionExpr{Parameters: &ast.Parameters{}, Body: $2}
 		$$.SetPos($2.Pos())
 	}
 	| '-' expr %prec UNARY
@@ -396,7 +398,17 @@ expr_pair
 		$$.SetPos($1.Pos())
 	}
 
-namelist
+parameters
+	: parameters_
+	{
+		$$ = &ast.Parameters{Names: $1}
+	}
+	| parameters_ ',' opt_decls '*' ID
+	{
+		$$ = &ast.Parameters{Names: $1, Rest: $5.literal}
+	}
+
+parameters_
 	:
 	{
 		$$ = []string{}
@@ -405,7 +417,7 @@ namelist
 	{
 		$$ = []string{$1.literal}
 	}
-	| namelist ',' opt_decls ID
+	| parameters_ ',' opt_decls ID
 	{
 		$$ = append($1, $4.literal)
 	}

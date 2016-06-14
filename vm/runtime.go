@@ -607,9 +607,17 @@ func runLoop(m *Machine, isLooping bool) (Object, bool) {
 			argc := m.arg1()
 			switch fn := m.pop().(type) {
 			case *Function:
-				if argc == fn.argc() {
+				if fn.validArgc(argc) {
 					values := make([]Object, fn.numLocalVars)
-					for i := argc - 1; i >= 0; i-- {
+					if fn.isVariadic() {
+						size := argc - fn.min
+						list := make(List, size)
+						for i := size - 1; i >= 0; i-- {
+							list[i] = m.pop()
+						}
+						values[fn.min] = list
+					}
+					for i := fn.min - 1; i >= 0; i-- {
 						values[i] = m.pop()
 					}
 					m.push(m.env)

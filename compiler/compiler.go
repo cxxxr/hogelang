@@ -251,8 +251,11 @@ func compFuncallExpr(expr *ast.FuncallExpr, exe *vm.Executable, env *Env) {
 
 func compFunctionExpr(expr *ast.FunctionExpr, exe *vm.Executable, env *Env) {
 	env = NewEnv(env)
-	for _, n := range expr.Parameters {
+	for _, n := range expr.Parameters.Names {
 		env.Put(n)
+	}
+	if expr.Parameters.Rest != "" {
+		env.Put(expr.Parameters.Rest)
 	}
 	exe2 := vm.NewExecutable(exe)
 	compStmt(expr.Body, exe2, env, nil)

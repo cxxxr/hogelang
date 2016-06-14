@@ -2,6 +2,7 @@ package vm
 
 import (
 	"fmt"
+	"github.com/cxxxr/hogelang/ast"
 	"strings"
 )
 
@@ -103,15 +104,28 @@ func NewBlock(code []Instr) *Block {
 }
 
 type Function struct {
-	parameters   []string
+	parameters   *ast.Parameters
+	min          int
+	max          int
 	code         []Instr
 	numLocalVars int
 	env          *Env
 }
 
-func MakeFunction(parms []string, code []Instr, numLocalVars int) *Function {
+func MakeFunction(parms *ast.Parameters, code []Instr, numLocalVars int) *Function {
+	var min, max int
+
+	min = len(parms.Names)
+	if parms.Rest != "" {
+		max = -1
+	} else {
+		max = min
+	}
+
 	return &Function{
 		parameters:   parms,
+		min:          min,
+		max:          max,
 		code:         code,
 		numLocalVars: numLocalVars,
 	}
@@ -120,14 +134,20 @@ func MakeFunction(parms []string, code []Instr, numLocalVars int) *Function {
 func NewFunction(fn *Function, env *Env) *Function {
 	return &Function{
 		parameters:   fn.parameters,
+		min:          fn.min,
+		max:          fn.max,
 		code:         fn.code,
 		numLocalVars: fn.numLocalVars,
 		env:          env,
 	}
 }
 
-func (fn *Function) argc() int {
-	return len(fn.parameters)
+func (fn *Function) validArgc(argc int) bool {
+	return fn.min <= argc && (fn.max == -1 || argc <= fn.max)
+}
+
+func (fn *Function) isVariadic() bool {
+	return fn.max == -1
 }
 
 type BuiltinFunction struct {
