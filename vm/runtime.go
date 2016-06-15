@@ -66,11 +66,19 @@ func (m *Machine) getGlobal(i int) (Object, bool) {
 }
 
 func (m *Machine) getLocal(i, j int) Object {
-	return m.env.get(i, j)
+	env := m.env
+	for n := 0; n < i; n++ {
+		env = env.parent
+	}
+	return m.stack[env.sp+j]
 }
 
 func (m *Machine) setLocal(i int, j int, v Object) {
-	m.env.set(i, j, v)
+	env := m.env
+	for n := 0; n < i; n++ {
+		env = env.parent
+	}
+	m.stack[env.sp+j] = v
 }
 
 func (m *Machine) codeAhead() Opcode {
@@ -608,22 +616,20 @@ func runLoop(m *Machine, isLooping bool) (Object, bool) {
 			switch fn := m.pop().(type) {
 			case *Function:
 				if fn.validArgc(argc) {
-					values := make([]Object, fn.numLocalVars)
 					if fn.isVariadic() {
 						size := argc - fn.min
 						list := make(List, size)
 						for i := size - 1; i >= 0; i-- {
 							list[i] = m.pop()
 						}
-						values[fn.min] = list
+						m.push(list)
 					}
-					for i := fn.min - 1; i >= 0; i-- {
-						values[i] = m.pop()
-					}
+					m.stackTop += fn.numLocalVars - argc
+					env := NewEnv(fn.env, m.stackTop - fn.numLocalVars)
 					m.push(m.env)
 					m.push(m.pc + 1)
 					m.push(m.code)
-					m.setProgram(fn.code, 0, NewEnv(fn.env, values))
+					m.setProgram(fn.code, 0, env)
 					continue
 				} else {
 					raise(m, "invalid number of argument")
@@ -642,10 +648,12 @@ func runLoop(m *Machine, isLooping bool) (Object, bool) {
 				typeError(m, fn, T_FUNCTION)
 			}
 		case RETURN:
+			sp := m.env.sp
 			v := m.pop()
 			code := m.pop().([]Instr)
 			pc := m.pop().(int)
 			env := m.pop().(*Env)
+			m.stackTop = sp
 			m.setProgram(code, pc, env)
 			m.push(v)
 			if isLooping {
@@ -761,7 +769,7 @@ func Run(m *Machine) Object {
 	m.err = nil
 	m.code = m.exe.code
 	m.constTable = *exe.constTable
-	m.env = NewEnv(nil, []Object{})
+	m.env = nil
 	m.stack = make([]Object, 1000)
 	m.stackTop = 0
 	m.pc = 0
