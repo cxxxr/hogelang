@@ -7,6 +7,14 @@ import (
 	"strconv"
 )
 
+type SyntaxError struct {
+	msg string
+}
+
+func (e *SyntaxError) Error() string {
+	return e.msg
+}
+
 var labelCounter int
 
 func initLabelCounter() {
@@ -32,7 +40,7 @@ type loopInfo struct {
 }
 
 func syntaxError(msg string) {
-	panic(fmt.Sprintf("syntax error: %s", msg))
+	panic(&SyntaxError{msg: fmt.Sprintf("syntax error: %s", msg)})
 }
 
 func genSetVar(exe *vm.Executable, env *Env, name string, pos *ast.Pos) {
@@ -409,12 +417,24 @@ func assemble(exe *vm.Executable) *vm.Executable {
 	return exe2
 }
 
-func Compile(exe *vm.Executable, x ast.Stmt) *vm.Executable {
+func Compile(exe *vm.Executable, x ast.Stmt) (exe2 *vm.Executable, err error) {
+	defer func() {
+		er := recover()
+		if er == nil {
+			return
+		}
+		if e, ok := er.(*SyntaxError); ok {
+			err = e
+		} else {
+			panic(err)
+		}
+	}()
+
 	initLabelCounter()
 	exe.Init()
 	compStmt(x, exe, NewEnv(nil), nil)
 	exe.Gen(nil, vm.HALT, 0, 0)
-	exe = assemble(exe)
-	//exe.Show()
-	return exe
+	exe2 = assemble(exe)
+	//exe2.Show()
+	return
 }

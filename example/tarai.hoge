@@ -8,4 +8,4 @@ tarai = : x, y, z {
 	end
 }
 
-print(tarai(12,6,0))
+print(tarai(8,4,0))

@@ -12,16 +12,20 @@ import (
 	"strings"
 )
 
-func eval(m *vm.Machine, exe *vm.Executable, str string) vm.Object {
+func eval(m *vm.Machine, exe *vm.Executable, str string) (vm.Object, error) {
 	p := parser.NewParser(strings.NewReader(str))
 	x, err := p.Parse()
 	if err != nil {
 		fmt.Println(err)
-		return nil
+		return nil, err
 	} else {
-		exe = compiler.Compile(exe, x)
-		m.SetExecutable(exe)
-		return vm.Run(m)
+		exe, err = compiler.Compile(exe, x)
+		if err == nil {
+			m.SetExecutable(exe)
+			return vm.Run(m)
+		} else {
+			return nil, err
+		}
 	}
 }
 
@@ -36,7 +40,11 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			eval(m, exe, string(dat))
+			_, err = eval(m, exe, string(dat))
+			if err != nil {
+				fmt.Println(err)
+				break
+			}
 		}
 	} else {
 		reader := bufio.NewReader(os.Stdin)
@@ -52,8 +60,10 @@ func main() {
 				continue
 			}
 
-			v := eval(m, exe, string(line))
-			if v != nil {
+			v, err := eval(m, exe, string(line))
+			if err != nil {
+				fmt.Println(err)
+			} else if v != nil {
 				fmt.Println(v)
 			}
 		}

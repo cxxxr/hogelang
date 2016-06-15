@@ -2,7 +2,7 @@ package vm
 
 type Env struct {
 	parent *Env
-	sp int
+	sp     int
 	length int
 	values []Object
 }

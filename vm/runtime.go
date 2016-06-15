@@ -1,10 +1,17 @@
 package vm
 
 import (
-	"errors"
 	"fmt"
 	"github.com/cxxxr/hogelang/ast"
 )
+
+type RuntimeError struct {
+	msg string
+}
+
+func (err *RuntimeError) Error() string {
+	return err.msg
+}
 
 type Machine struct {
 	exe         *Executable
@@ -188,7 +195,7 @@ func assertFixnum(m *Machine, v Object, types int) Fixnum {
 
 func raise(m *Machine, msg string) {
 	pos := m.pos()
-	m.throw(errors.New(fmt.Sprintf("error:%d:%d: %s", pos.Line, pos.Offset, msg)))
+	m.throw(&RuntimeError{msg: fmt.Sprintf("error:%d:%d: %s", pos.Line, pos.Offset, msg)})
 }
 
 func typeError(m *Machine, v Object, types int) {
@@ -794,7 +801,7 @@ func runLoop(m *Machine, isLooping bool) (Object, bool) {
 	}
 }
 
-func Run(m *Machine) Object {
+func Run(m *Machine) (result Object, err error) {
 	exe := m.exe
 	m.err = nil
 	m.code = m.exe.code
@@ -810,14 +817,14 @@ func Run(m *Machine) Object {
 	}
 
 	defer func() {
-		err := recover()
-		if m.err != err {
-			panic(err)
-		} else if err != nil {
-			fmt.Println(err)
+		e := recover()
+		if m.err != e {
+			panic(e)
+		} else if e != nil {
+			err = e.(*RuntimeError)
 		}
 	}()
 
-	v, _ := runLoop(m, false)
-	return v
+	result, _ = runLoop(m, false)
+	return
 }
