@@ -65,12 +65,36 @@ func (m *Machine) getGlobal(i int) (Object, bool) {
 	return v, v != nil
 }
 
+func (m *Machine) copyToHeapEnv() *Env {
+	var bottomEnv *Env = nil
+	var env2 *Env = nil
+	var prev *Env = nil
+	for env := m.env; env != nil; env = env.parent {
+		values := make([]Object, env.length)
+		copy(values, m.stack[env.sp:env.sp+env.length])
+		env2 = NewHeapEnv(nil, values)
+		if prev != nil {
+			prev.parent = env2
+		} else {
+			bottomEnv = env2
+		}
+		prev = env2
+	}
+
+	return bottomEnv
+}
+
 func (m *Machine) getLocal(i, j int) Object {
 	env := m.env
 	for n := 0; n < i; n++ {
 		env = env.parent
 	}
-	return m.stack[env.sp+j]
+
+	if env.sp < 0 {
+		return env.values[j]
+	} else {
+		return m.stack[env.sp+j]
+	}
 }
 
 func (m *Machine) setLocal(i int, j int, v Object) {
@@ -78,7 +102,11 @@ func (m *Machine) setLocal(i int, j int, v Object) {
 	for n := 0; n < i; n++ {
 		env = env.parent
 	}
-	m.stack[env.sp+j] = v
+	if env.sp < 0 {
+		env.values[j] = v
+	} else {
+		m.stack[env.sp+j] = v
+	}
 }
 
 func (m *Machine) codeAhead() Opcode {
@@ -610,7 +638,7 @@ func runLoop(m *Machine, isLooping bool) (Object, bool) {
 			m.setLocal(m.arg1(), m.arg2(), m.pop())
 		case MAKE_FUNCTION:
 			v := m.getConst(m.arg1())
-			m.push(NewFunction(v.(*Function), m.env))
+			m.push(NewFunction(v.(*Function), m.copyToHeapEnv()))
 		case CALL:
 			argc := m.arg1()
 			switch fn := m.pop().(type) {
@@ -625,7 +653,9 @@ func runLoop(m *Machine, isLooping bool) (Object, bool) {
 						m.push(list)
 					}
 					m.stackTop += fn.numLocalVars - argc
-					env := NewEnv(fn.env, m.stackTop - fn.numLocalVars)
+					env := NewStackEnv(fn.env,
+						m.stackTop-fn.numLocalVars,
+						fn.numLocalVars)
 					m.push(m.env)
 					m.push(m.pc + 1)
 					m.push(m.code)

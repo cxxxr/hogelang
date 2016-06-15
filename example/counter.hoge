@@ -1,0 +1,11 @@
+make_counter = {
+	var count = 0
+	return {
+		count = count + 1
+		return count
+	}
+}
+
+f = make_counter()
+print(f())
+print(f())
