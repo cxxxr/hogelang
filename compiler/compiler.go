@@ -389,6 +389,7 @@ func compRangeExpr(expr *ast.RangeExpr, exe *vm.Executable, env *Env) {
 }
 
 func assemble(exe *vm.Executable) *vm.Executable {
+	exe = optimize(exe)
 	exe2 := vm.NewExecutable(exe)
 
 	labelMap := make([]int, labelCounter+1)

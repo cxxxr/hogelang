@@ -262,6 +262,10 @@ func (exe *Executable) SetConst(val Object) int {
 	return len(*exe.constTable) - 1
 }
 
+func (exe *Executable) GetConst(i int) Object {
+	return (*exe.constTable)[i]
+}
+
 func (exe *Executable) AddGlobal(name string) (int, bool) {
 	for i, name2 := range *exe.globalVars {
 		if name == name2 {
